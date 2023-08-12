@@ -1,19 +1,4 @@
-#  ZeldrisRobot
-#  Copyright (C) 2017-2019, Paul Larsen
-#  Copyright (C) 2022, IDNCoderX Team, <https://github.com/IDN-C-X/ZeldrisRobot>
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU Affero General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-#  GNU Affero General Public License for more details.
-#
-#  You should have received a copy of the GNU Affero General Public License
-#  along with this program. If not, see <http://www.gnu.org/licenses/>.
+
 
 
 import random
@@ -23,209 +8,80 @@ from typing import Union
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
 from sqlalchemy.sql.sqltypes import BigInteger
 
-from zeldris.modules.helper_funcs.msg_types import Types
-from zeldris.modules.sql import BASE, SESSION
+from msdq.modules.helper_funcs.msg_types import Types
+from msdq.modules.sql import BASE, SESSION
 
-DEFAULT_WELCOME = "Hey {first}, how are you?"
-DEFAULT_GOODBYE = "Nice knowing ya!"
+DEFAULT_WELCOME = "Halo {first}, Gimana kabar lu?"
+DEFAULT_GOODBYE = "Dada sayanggg!"
 
 DEFAULT_WELCOME_MESSAGES = [
-    "{first} is here!",  # Discord welcome messages copied
-    "Ready player {first}",
-    "Genos, {first} is here.",
-    "A wild {first} appeared.",
-    "{first} came in like a Lion!",
-    "{first} has joined your party.",
-    "{first} just joined. Can I get a heal?",
-    "{first} just joined the chat - asdgfhak!",
-    "{first} just joined. Everyone, look busy!",
-    "Welcome, {first}. Stay awhile and listen.",
-    "Welcome, {first}. We were expecting you ( ͡° ͜ʖ ͡°)",
-    "Welcome, {first}. We hope you brought pizza.",
-    "Welcome, {first}. Leave your weapons by the door.",
-    "Swoooosh. {first} just landed.",
-    "Brace yourselves. {first} just joined the chat.",
-    "{first} just joined. Hide your bananas.",
-    "{first} just arrived. Seems OP - please nerf.",
-    "{first} just slid into the chat.",
-    "A {first} has spawned in the chat.",
-    "Big {first} showed up!",
-    "Where’s {first}? In the chat!",
-    "{first} hopped into the chat. Kangaroo!!",
-    "{first} just showed up. Hold my beer.",
-    "Challenger approaching! {first} has appeared!",
-    "It's a bird! It's a plane! Nevermind, it's just {first}.",
-    r"It's {first}! Praise the sun! \o/",
-    "Never gonna give {first} up. Never gonna let {first} down.",
-    "Ha! {first} has joined! You activated my trap card!",
-    "Hey! Listen! {first} has joined!",
-    "We've been expecting you {first}",
-    "It's dangerous to go alone, take {first}!",
-    "{first} has joined the chat! It's super effective!",
-    "Cheers, love! {first} is here!",
-    "{first} is here, as the prophecy foretold.",
-    "{first} has arrived. Party's over.",
-    "{first} is here to kick butt and chew bubblegum. And {first} is all out of gum.",
-    "Hello. Is it {first} you're looking for?",
-    "{first} has joined. Stay a while and listen!",
-    "Roses are red, violets are blue, {first} joined this chat with you",
-    "It's a bird! It's a plane! - Nope, its {first}!",
-    "{first} Joined! - Ok.",  # Discord welcome messages end.
-    "All Hail {first}!",
-    "Hi, {first}. Don't lurk, Only Villans do that.",
-    "{first} has joined the battle bus.",
-    "A new Challenger enters!",  # Tekken
-    "Ok!",
-    "{first} just fell into the chat!",
-    "Something just fell from the sky! - oh, its {first}.",
-    "{first} Just teleported into the chat!",
-    "Hi, {first}, show me your Hunter License!",
-    "Welcome {first}, Leaving is not an option!",
-    "Run Forest! ..I mean...{first}.",
-    "Hey, {first}, Empty your pockets.",
-    "Hey, {first}!, Are you strong?",
-    "Call the Avengers! - {first} just joined the chat.",
-    "{first} joined. You must construct additional pylons.",
-    "Ermagherd. {first} is here.",
-    "Come for the Snail Racing, Stay for the Chimichangas!",
-    "Who needs Google? You're everything we were searching for.",
-    "This place must have free WiFi, cause I'm feeling a connection.",
-    "Speak friend and enter.",
-    "Welcome you are",
-    "Welcome {first}, your princess is in another castle.",
-    "Hi {first}, welcome to the dark side.",
-    "Hola {first}, beware of people with nation levels",
-    "Hey {first}, we have the droids you are looking for.",
-    "Hi {first}\nThis isn't a strange place, this is my home, it's the people who are strange.",
-    "Oh, hey {first} what's the password?",
-    "Hey {first}, I know what we're gonna do today",
-    "{first} just joined, be at alert they could be a spy.",
-    "{first} joined the group, read by Mark Zuckerberg, CIA and 35 others.",
-    "Welcome {first}, Watch out for falling monkeys.",
-    "Everyone stop what you’re doing, We are now in the presence of {first}.",
-    "Hey {first}, Do you wanna know how I got these scars?",
-    "Welcome {first}, drop your weapons and proceed to the spy scanner.",
-    "Stay safe {first}, Keep 3 meters social distances between your messages.",  # Corona memes lmao
-    "You’re here now {first}, Resistance is futile",
-    "{first} just arrived, the force is strong with this one.",
-    "{first} just joined on president’s orders.",
-    "Hi {first}, is the glass half full or half empty?",
-    "Yipee Kayaye {first} arrived.",
-    "Welcome {first}, if you’re a secret agent press 1, otherwise start a conversation",
-    "{first}, I have a feeling we’re not in Kansas anymore.",
-    "They may take our lives, but they’ll never take our {first}.",
-    "Coast is clear! You can come out guys, it’s just {first}.",
-    "Welcome {first}, Pay no attention to that guy lurking.",
-    "Welcome {first}, May the force be with you.",
-    "May the {first} be with you.",
-    "{first} just joined.Hey, where's Perry?",
-    "{first} just joined. Oh, there you are, Perry.",
-    "Ladies and gentlemen, I give you ...  {first}.",
-    "Behold my new evil scheme, the {first}-Inator.",
-    "Ah, {first} the Platypus, you're just in time... to be trapped.",
-    "*snaps fingers and teleports {first} here*",
-    "{first} just arrived. Diable Jamble!",  # One Piece Sanji
-    "{first} just arrived. Aschente!",  # No Game No Life
-    "{first} say Aschente to swear by the pledges.",  # No Game No Life
-    "{first} just joined. El psy congroo!",  # Steins Gate
-    "Irasshaimase {first}!",  # weeabo shit
-    "Hi {first}, What is 1000-7?",  # tokyo ghoul
-    "Come. I don't want to destroy this place",  # hunter x hunter
-    "I... am... Whitebeard!...wait..wrong anime.",  # one Piece
-    "Hey {first}...have you ever heard these words?",  # BNHA
-    "Can't a guy get a little sleep around here?",  # Kamina Falls – Gurren Lagann
-    "It's time someone put you in your place, {first}.",  # Hellsing
-    "Unit-01's reactivated..",  # Neon Genesis: Evangelion
-    "Prepare for trouble....And make it double",  # Pokemon
-    "Hey {first}, Are You Challenging Me?",  # Shaggy
-    "Oh? You're Approaching Me?",  # jojo
-    "{first} just warped into the group!",
-    "I..it's..it's just {first}.",
-    "Sugoi, Dekai. {first} Joined!",
-    "{first}, do you know Gods of death love apples?",  # Death Note owo
-    "I'll take a potato chip.... and eat it",  # Death Note owo
-    "Oshiete oshiete yo sono shikumi wo!",  # Tokyo Ghoul
-    "Kaizoku ou ni...nvm wrong anime.",  # op
-    "{first} just joined! Gear.....second!",  # Op
-    "Omae wa mou....shindeiru",
-    "Hey {first}, the leaf village lotus blooms twice!",  # Naruto stuff begins from here
-    "{first} Joined! Omote renge!",
-    "{first} joined!, Gate of Opening...open!",
-    "{first} joined!, Gate of Healing...open!",
-    "{first} joined!, Gate of Life...open!",
-    "{first} joined!, Gate of Pain...open!",
-    "{first} joined!, Gate of Limit...open!",
-    "{first} joined!, Gate of View...open!",
-    "{first} joined!, Gate of Shock...open!",
-    "{first} joined!, Gate of Death...open!",
-    "{first}! I, Madara! declare you the strongest",
-    "{first}, this time I'll lend you my power. ",  # Kyuubi to naruto
-    "{first}, welcome to the hidden leaf village!",  # Naruto thingies end here
-    "In the jungle you must wait...until the dice read five or eight.",  # Jumanji stuff
-    "Dr.{first} Famed archeologist and international explorer,\nWelcome to Jumanji!\nJumanji's Fate is up to you now.",
-    "{first}, this will not be an easy mission - monkeys slow the expedition.",  # End of jumanji stuff
+    "{first} Kemana aja? utang lu bayar dulu sini!",  # Discord welcome messages copied
+    "Gimana hari mu? {first}",
+    "Nih orang wibu {first}",
+    "Spontan? {first} ",
+    "{first} Bandar nih!",
+    "{first} Lu udah berak blom",
+    "{first} Kemaren lu sama siapa di oyo?",
+    "{first} njir lu kesini!",
+    "{first} Kapan Nikah?",
+    "Hei, {first}. Main yuk",
+    "Bagi rokok cok {first}",
+    "Lu kan {first} ?",
+    "Gimana kerjaan lu? {first}",
+    "Mau ipon dong bang {first}",
+    "Kemaren lu kemana? {first}",
+    "Ngopi sini {first}",
+    "Kalo disini gausah alay ya {first}",
+    "{first} Lu kalo mau beli userbot premium PC aja @msdqqq",
+    "Kalo mau nyari nokos telegram PC aja @msdqqq",
+    "Hadehh",
+    "userbot nya ready pc @msdqqq",
+    "bot file sharing ready PC @msdqqq",
+    "{first} gabut mampir sini @DezetSupport",
+    "iyain",
+    "kiw kiw empuk jeruu ihik ihik {first}",
+    "inpo loker dong {first}", 
+    "beli bot manage di @msdqqq", 
+    "bot music gratis @AmelXDzulMusicRobot", 
+    "Owner gw nih @msdqqq", 
+    "nomor dana masih sama yee {first}", 
+    "Masih sama orang itu? {first}", 
+    "VPS nya ready pc aja @msdqqq", 
+    "Lah di cariin emak lu noh {first}", 
+    "Minimal bayar utang yee {first}", 
+    "Widih holang kayaa {first}", 
+    "Korek gw mana {first}, semalem abis nongkrong ga ada? ", 
+    "Sari roti... ", 
+    "Pinjem duit lu sejuta dulu {first}", 
+    "Keren",
+    "Lu inget si agus dia sekarang pacaran sama {first} anj", 
+    "Nyari pinjeman apa simpenan bro {first} ?", 
+    "Lu setuju ga Jokowi 3 periode? {first}", 
+    "mabar candy crush yok? {first}", 
+    "inpo bansos!",
+    "inpo ngantemi {first}", 
+    "Salam biar sopan {first}", 
+    "ML an yok?", 
+    "Eh si {first} ternyata bandar",
+    "holang kayaaa {first}", 
+    "minimal mandi", 
+    "Akhirnya nongol juga {first}", 
+    "ikut jaga lilin ga? {first}", 
+    "Intro {first} biar kaya efbe", 
+    "ikan Hui ikan tongkol, nih orang {first} kaya kon",  # End of jumanji stuff
 ]
 DEFAULT_GOODBYE_MESSAGES = [
-    "{first} will be missed.",
-    "{first} just went offline.",
-    "{first} has left the lobby.",
-    "{first} has left the clan.",
-    "{first} has left the game.",
-    "{first} has fled the area.",
-    "{first} is out of the running.",
-    "Nice knowing ya, {first}!",
-    "It was a fun time {first}.",
-    "We hope to see you again soon, {first}.",
-    "I donut want to say goodbye, {first}.",
-    "Goodbye {first}! Guess who's gonna miss you :')",
-    "Goodbye {first}! It's gonna be lonely without ya.",
-    "Please don't leave me alone in this place, {first}!",
-    "Good luck finding better shitposters than us, {first}!",
-    "You know we're gonna miss you {first}. Right? Right? Right?",
-    "Congratulations, {first}! You're officially free of this mess.",
-    "{first}. You were an opponent worth fighting.",
-    "You're leaving, {first}? Yare Yare Daze.",
-    "Bring him the photo",
-    "Go outside!",
-    "Ask again later",
-    "Think for yourself",
-    "Question authority",
-    "You are worshiping a sun god",
-    "Don't leave the house today",
-    "Give up!",
-    "Marry and reproduce",
-    "Stay asleep",
-    "Wake up",
-    "Look to la luna",
-    "Steven lives",
-    "Meet strangers without prejudice",
-    "A hanged man will bring you no luck today",
-    "What do you want to do today?",
-    "You are dark inside",
-    "Have you seen the exit?",
-    "Get a baby pet it will cheer you up.",
-    "Your princess is in another castle.",
-    "You are playing it wrong give me the controller",
-    "Trust good people",
-    "Live to die.",
-    "When life gives you lemons reroll!",
-    "Well that was worthless",
-    "I feel asleep!",
-    "May your troubles be many",
-    "Your old life lies in ruin",
-    "Always look on the bright side",
-    "It is dangerous to go alone",
-    "You will never be forgiven",
-    "You have nobody to blame but yourself",
-    "Only a sinner",
-    "Use bombs wisely",
-    "Nobody knows the troubles you have seen",
-    "You look fat you should exercise more",
-    "Follow the zebra",
-    "Why so blue?",
-    "The devil in disguise",
-    "Go outside",
-    "Always your head in the clouds",
+    "{first} Keluar lu sono",
+    "{first} kok keluar?",
+    "{first} gausah balik lagi yee",
+    "{first} cabut sono",
+    "beli bot di @DezetStore",
+    "Gapunya Temen ya lu? {first} ",
+    "{first} hati hati dijalan",
+    "Gajelas lu {first}!",
+    "nitip gorengan yee {first}.",
+    "nolep lu? {first}.",
+    "Ah baperan si {first}", 
 ]
 
 
