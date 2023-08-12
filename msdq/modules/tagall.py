@@ -6,7 +6,7 @@ from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin
 from telethon.tl.types import ChannelParticipantCreator
 
-from zeldris import client
+from msdq import client
 
 spam_chats = []
 
@@ -113,10 +113,10 @@ __mod_name__ = "Tag all"
 __help__ = """
 ──「 Mention all func 」──
 
-Yins Can Be a Mention Bot for your group.
+MSDQ-ROBOT Can Be a Mention Bot for your group.
 
 Only admins can tag all.  here is a list of commands
 
-❂ /tagall or @all (reply to message or add another message) To mention all members in your group, without exception.
-❂ /cancel for canceling the mention-all.
+× /all (reply to message or add another message) To mention all members in your group, without exception.
+× /cancel for canceling the mention-all.
 """
