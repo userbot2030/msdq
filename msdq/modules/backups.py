@@ -1,19 +1,3 @@
-#  ZeldrisRobot
-#  Copyright (C) 2017-2019, Paul Larsen
-#  Copyright (C) 2022, IDNCoderX Team, <https://github.com/IDN-C-X/ZeldrisRobot>
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU Affero General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-#  GNU Affero General Public License for more details.
-#
-#  You should have received a copy of the GNU Affero General Public License
-#  along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 import contextlib
@@ -27,22 +11,22 @@ from telegram import ParseMode, Message, Update, User
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, CallbackContext
 
-# from zeldris.modules.sql import warns_sql as warnssql
-import zeldris.modules.sql.blacklist_sql as blacklistsql
+# from msdq.modules.sql import warns_sql as warnssql
+import msdq.modules.sql.blacklist_sql as blacklistsql
 
-# from zeldris.modules.sql import cust_filters_sql as filtersql
-# import zeldris.modules.sql.welcome_sql as welcsql
-import zeldris.modules.sql.locks_sql as locksql
-import zeldris.modules.sql.notes_sql as sql
+# from msdq.modules.sql import cust_filters_sql as filtersql
+# import msdq.modules.sql.welcome_sql as welcsql
+import msdq.modules.sql.locks_sql as locksql
+import msdq.modules.sql.notes_sql as sql
 
-# from zeldris.modules.rules import get_rules
-import zeldris.modules.sql.rules_sql as rulessql
-from zeldris import dispatcher, LOGGER, OWNER_ID, MESSAGE_DUMP
-from zeldris.__main__ import DATA_IMPORT
-from zeldris.modules.connection import connected
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.chat_status import user_admin
-from zeldris.modules.sql import disable_sql as disabledsql
+# from msdq.modules.rules import get_rules
+import msdq.modules.sql.rules_sql as rulessql
+from msdq import dispatcher, LOGGER, OWNER_ID, MESSAGE_DUMP
+from msdq.__main__ import DATA_IMPORT
+from msdq.modules.connection import connected
+from msdq.modules.helper_funcs.alternate import typing_action
+from msdq.modules.helper_funcs.chat_status import user_admin
+from msdq.modules.sql import disable_sql as disabledsql
 
 
 @user_admin
