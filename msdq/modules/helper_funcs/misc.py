@@ -69,7 +69,7 @@ def paginate_modules(_: int, module_dict: Dict, prefix, chat=None) -> List:
     if calc in [1, 2]:
         pairs.append([modules[-1]])
     else:
-        pairs += [[EqInlineKeyboardButton("Kembali", callback_data="zel_manage")]]
+        pairs += [[EqInlineKeyboardButton("Kembali", callback_data="zul_manage")]]
     return pairs
 
 
