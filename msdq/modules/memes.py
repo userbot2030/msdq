@@ -1,19 +1,4 @@
-#  ZeldrisRobot
-#  Copyright (C) 2017-2019, Paul Larsen
-#  Copyright (C) 2022, IDNCoderX Team, <https://github.com/IDN-C-X/ZeldrisRobot>
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU Affero General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-#  GNU Affero General Public License for more details.
-#
-#  You should have received a copy of the GNU Affero General Public License
-#  along with this program. If not, see <http://www.gnu.org/licenses/>.
+
 
 
 import random
@@ -26,15 +11,15 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, Filters, CallbackContext
 from telegram.utils.helpers import escape_markdown
 
-import zeldris.modules.helper_funcs.fun_strings as fun
-from zeldris import LOGGER, DEV_USERS, SUPPORT_USERS, dispatcher
-from zeldris.modules.disable import (
+import msdq.modules.helper_funcs.fun_strings as fun
+from msdq import LOGGER, DEV_USERS, SUPPORT_USERS, dispatcher
+from msdq.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.extraction import extract_user
-from zeldris.modules.helper_funcs.filters import CustomFilters
+from msdq.modules.helper_funcs.alternate import typing_action
+from msdq.modules.helper_funcs.extraction import extract_user
+from msdq.modules.helper_funcs.filters import CustomFilters
 
 
 @typing_action
@@ -459,7 +444,7 @@ Some dank memes for fun or whatever!
 Some other regex filters are:
 `me too` | `good morning` | `good night`.
 
-Zeldris will reply random strings accordingly when these words are used!
+MSDQ-ROBOT will reply random strings accordingly when these words are used!
 All regex filters can be disabled incase u don't want... like: `/disable metoo`.
 """
 
