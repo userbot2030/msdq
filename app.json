@@ -1,17 +1,17 @@
 {
-  "name": "ZeldrisRobot",
+  "name": "MSDQ-ROBOT",
   "description": "Telegram group management bot.",
-  "logo": "https://telegra.ph/file/016628a91c2d0ed99c3cf.jpg",
+  "logo": "",
   "keywords": [
     "telegram",
-    "anime",
+    "bot", 
     "group",
-    "manager",
-    "Zeldris"
+    "manage",
+    "msdq"
   ],
-  "repository": "https://github.com/IDN-C-X/ZeldrisRobot.git",
-  "website": "https://idn-c-x.github.io",
-  "success_url": "t.me/IDNCoder",
+  "repository": "https://github.com/MS-DZULQURNAIN/msdq",
+  "website": "",
+  "success_url": "t.me/DezetStore",
   "addons": [
     {
       "options": {
@@ -55,7 +55,7 @@
     "OWNER_ID": {
       "description": "Your user ID as an integer.",
       "required": true,
-      "value": "645739169"
+      "value": "1814359323"
     },
     "HEROKU_API_KEY": {
       "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
@@ -67,32 +67,32 @@
     },
     "OWNER_USERNAME": {
       "description": "Your username without the @",
-      "value": "Anomaliii"
+      "value": "msdqq"
     },
     "SUPPORT_CHAT": {
       "description": "Your Telegram support group chat username where your users will go and bother you with shit But be like: MyGroupChatUsernameBlah. If this ever points to zeldris support than consider you made an enemy.",
       "required": true,
-      "value": "IDNCoderX"
+      "value": "DezetSupport"
     },
     "MESSAGE_DUMP": {
       "description": "Event logs channel to note down important bot level events, recommend to make this public. ex: '-123456'",
       "required": true,
-      "value": "-1001599383497"
+      "value": ""
     },
     "DEV_USERS": {
       "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Zeldris Support then keep the current ID's here at they are and add yours.",
       "required": false,
-      "value": ""
+      "value": "1814359323"
     },
     "SUPPORT_USERS": {
       "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Zeldris Support then keep the current ID's here at they are and add yours.",
       "required": false,
-      "value": ""
+      "value": "1814359323"
     },
     "WHITELIST_USERS": {
       "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Zeldris Support then keep the current ID's here at they are and add yours.",
       "required": false,
-      "value": ""
+      "value": "1814359323"
     },
     "SPAMWATCH_API": {
       "description": "Spamwatch API Token, Get one from @SpamWatchBot.",
@@ -144,7 +144,7 @@
     "DONATION_LINK": {
       "description": "Optional: link where you would like to receive donations. If you are a noob, better leave it linking to paul",
       "required": false,
-      "value": "https://t.me/IDNCoderX"
+      "value": "https://t.me/DezetStore"
     },
     "DEL_CMDS": {
       "description": "Set this to True if you want to delete command messages from users who don't have the perms to run that command.",
@@ -165,6 +165,16 @@
       "required": false,
       "value": ""
     },
+    "BOT_USERNAME": {
+      "description": "Username your bot",
+      "required": false,
+      "value": ""
+    },
+    "PICTURE": {
+      "description": "Link picture alive",
+      "required": false,
+      "value": ""
+    },
     "REDIS_URL": {
       "description": "Take it from redislabs.com and the format should be redis://username:password@publicendpoint:port/",
       "required": true,
@@ -173,7 +183,7 @@
     "MONGO_DB": {
       "description": "Your mongodb name",
       "required": true,
-      "value": "Zeldris"
+      "value": "MSDQROBOT"
     },
     "MONGO_PORT": {
       "description": "Your mongodb port, better don't touch it",
