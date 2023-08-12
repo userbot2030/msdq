@@ -1,24 +1,8 @@
-#  ZeldrisRobot
-#  Copyright (C) 2017-2019, Paul Larsen
-#  Copyright (C) 2022, IDNCoderX Team, <https://github.com/IDN-C-X/ZeldrisRobot>
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU Affero General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-#  GNU Affero General Public License for more details.
-#
-#  You should have received a copy of the GNU Affero General Public License
-#  along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 import sys
 
-from zeldris import LOAD, NO_LOAD, LOGGER
+from msdq import LOAD, NO_LOAD, LOGGER
 
 
 def __list_all_modules():
@@ -40,14 +24,14 @@ def __list_all_modules():
                 any(mod == module_name for module_name in all_modules)
                 for mod in to_load
             ):
-                LOGGER.error("[Zeldris] Invalid loadorder names. Quitting.")
+                LOGGER.error("[MSDQ-ROBOT] Invalid loadorder names. Quitting.")
                 sys.exit(1)
 
         else:
             to_load = all_modules
 
         if NO_LOAD:
-            LOGGER.info(f"[Zeldris] Not loading: {NO_LOAD}")
+            LOGGER.info(f"[MSDQ-ROBOT] Not loading: {NO_LOAD}")
             return [item for item in to_load if item not in NO_LOAD]
 
         return to_load
@@ -56,5 +40,5 @@ def __list_all_modules():
 
 
 ALL_MODULES = sorted(__list_all_modules())
-LOGGER.info("[Zeldris] Modules to load: %s", str(ALL_MODULES))
+LOGGER.info("[MSDQ-ROBOT] Modules to load: %s", str(ALL_MODULES))
 __all__ = ALL_MODULES + ["ALL_MODULES"]
