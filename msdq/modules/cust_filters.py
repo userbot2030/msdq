@@ -1,19 +1,4 @@
-#  ZeldrisRobot
-#  Copyright (C) 2017-2019, Paul Larsen
-#  Copyright (C) 2022, IDNCoderX Team, <https://github.com/IDN-C-X/ZeldrisRobot>
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU Affero General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-#  GNU Affero General Public License for more details.
-#
-#  You should have received a copy of the GNU Affero General Public License
-#  along with this program. If not, see <http://www.gnu.org/licenses/>.
+
 
 
 import re
@@ -31,22 +16,22 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from zeldris import LOGGER, dispatcher
-from zeldris.modules.connection import connected
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import send_message, typing_action
-from zeldris.modules.helper_funcs.chat_status import user_admin
-from zeldris.modules.helper_funcs.extraction import extract_text
-from zeldris.modules.helper_funcs.filters import CustomFilters
-from zeldris.modules.helper_funcs.misc import build_keyboard_parser
-from zeldris.modules.helper_funcs.msg_types import get_filter_type
-from zeldris.modules.helper_funcs.string_handling import (
+from msdq import LOGGER, dispatcher
+from msdq.modules.connection import connected
+from msdq.modules.disable import DisableAbleCommandHandler
+from msdq.modules.helper_funcs.alternate import send_message, typing_action
+from msdq.modules.helper_funcs.chat_status import user_admin
+from msdq.modules.helper_funcs.extraction import extract_text
+from msdq.modules.helper_funcs.filters import CustomFilters
+from msdq.modules.helper_funcs.misc import build_keyboard_parser
+from msdq.modules.helper_funcs.msg_types import get_filter_type
+from msdq.modules.helper_funcs.string_handling import (
     button_markdown_parser,
     escape_invalid_curly_brackets,
     markdown_to_html,
     split_quotes,
 )
-from zeldris.modules.sql import cust_filters_sql as sql
+from msdq.modules.sql import cust_filters_sql as sql
 
 HANDLER_GROUP = 15
 
