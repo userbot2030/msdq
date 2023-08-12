@@ -1,5 +1,5 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from zeldris import BOT_USERNAME
+from msdq import BOT_USERNAME
 
 BMANAGE = InlineKeyboardMarkup(
                 [
