@@ -1,4 +1,4 @@
-MANAGE = "Berikut Panduan Perintah Lengkap"
+MANAGE = "Selamat datang di menu panduan"
 
 DASAR = """
 **Perintah Dasar**
