@@ -1,20 +1,3 @@
-# ZeldrisRobot
-# Copyright (C) 2017-2019, Paul Larsen
-# Copyright (C) 2022, IDNCoderX Team, <https://github.com/IDN-C-X/ZeldrisRobot>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
-
 
 import contextlib
 import importlib
@@ -42,7 +25,7 @@ from telegram.ext import (
 from telegram.ext.dispatcher import DispatcherHandlerStop
 from telegram.utils.helpers import escape_markdown
 
-from zeldris import (
+from msdq import (
     dispatcher,
     updater,
     StartTime,
@@ -59,15 +42,15 @@ from zeldris import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from zeldris.modules import ALL_MODULES
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.chat_status import is_user_admin
-from zeldris.modules.helper_funcs.misc import paginate_modules
-from zeldris.modules.purge import client
-from zeldris.modules.no_sql import users_db as db
-from zeldris import BOT_USERNAME, PICTURE
-from assets.text import MANAGE, DASAR, LANJUT, AHLI, PRO, MUSIC, ADMIN, BOT, PLAY, EXTRA, JASA
-from assets.button import BMANAGE, BBMANAGE, BMUSIC, BBMUSIC, BJASA
+from msdq.modules import ALL_MODULES
+from msdq.modules.disable import DisableAbleCommandHandler
+from msdq.modules.helper_funcs.chat_status import is_user_admin
+from msdq.modules.helper_funcs.misc import paginate_modules
+from msdq.modules.purge import client
+from msdq.modules.no_sql import users_db as db
+from msdq import BOT_USERNAME, PICTURE
+from zul.text import MANAGE, DASAR, LANJUT, AHLI, PRO, MUSIC, ADMIN, BOT, PLAY, EXTRA, JASA
+from zul.button import BMANAGE, BBMANAGE, BMUSIC, BBMUSIC, BJASA
 
 
 def get_readable_time(seconds: int) -> str:
@@ -116,11 +99,11 @@ buttons = [
         InlineKeyboardButton(text="ᴛᴀᴍʙᴀʜᴋᴀɴ ɢᴡ ᴋᴇ ɢʀᴏᴜᴘ ʟᴜ➕", url=f"t.me/{BOT_USERNAME}?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="ᴍᴀɴᴀɢᴇ", callback_data="zel_manage"),
-        InlineKeyboardButton(text="ᴍᴜsɪᴄ", callback_data="zel_music"),
+        InlineKeyboardButton(text="ᴍᴀɴᴀɢᴇ", callback_data="zul_manage"),
+        InlineKeyboardButton(text="ᴍᴜsɪᴄ", callback_data="zul_music"),
     ],
     [
-        InlineKeyboardButton(text="ᴊᴀsᴀ ʙᴏᴛ🤖", callback_data="zel_jasa"),
+        InlineKeyboardButton(text="ᴊᴀsᴀ ʙᴏᴛ🤖", callback_data="zul_jasa"),
     ],
     [
         InlineKeyboardButton(text="ᴄʜᴀɴɴᴇʟ", url="https://t.me/DezetStore"),
@@ -363,18 +346,18 @@ def help_button(update: Update, context: CallbackContext):
         context.bot.answer_callback_query(query.id)
 
 
-def zel_cb(update: Update, context: CallbackContext):
+def zul_cb(update: Update, context: CallbackContext):
     query = update.callback_query
-    if query.data == "zel_":
+    if query.data == "zul_":
         query.message.edit_text(
             text="""Your Callback Data""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="zel_back")]]
+                [[InlineKeyboardButton(text="Back", callback_data="zul_back")]]
             ),
         )
-    elif query.data == "zel_back":
+    elif query.data == "zul_back":
         nama = update.effective_user.first_name
         query.message.edit_text(
             PM_START_TEXT.format(
@@ -388,67 +371,67 @@ def zel_cb(update: Update, context: CallbackContext):
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
         )
-    elif query.data == "zel_manage":
+    elif query.data == "zul_manage":
         query.message.edit_text(
             text=MANAGE,
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=BMANAGE
         )
-    elif query.data == "zel_dasar":
+    elif query.data == "zul_dasar":
         query.message.edit_text(
             text=DASAR,
             reply_markup=BBMANAGE,
             parse_mode=ParseMode.MARKDOWN
         )
-    elif query.data == "zel_lanjut":
+    elif query.data == "zul_lanjut":
         query.message.edit_text(
             text=LANJUT,
             reply_markup=BBMANAGE,
             parse_mode=ParseMode.MARKDOWN
         )
-    elif query.data == "zel_ahli":
+    elif query.data == "zul_ahli":
         query.message.edit_text(
             text=AHLI,
             reply_markup=BBMANAGE, 
             parse_mode=ParseMode.MARKDOWN
         )
-    elif query.data == "zel_pro":
+    elif query.data == "zul_pro":
         query.message.edit_text(
             text=PRO,
             reply_markup=BBMANAGE,
             parse_mode=ParseMode.MARKDOWN
         )
-    elif query.data == "zel_music":
+    elif query.data == "zul_music":
         query.message.edit_text(
             text=MUSIC,
             reply_markup=BMUSIC,
             parse_mode=ParseMode.MARKDOWN
         )
-    elif query.data == "zel_admin":
+    elif query.data == "zul_admin":
         query.message.edit_text(
             text=ADMIN, 
             reply_markup=BBMUSIC,
             parse_mode=ParseMode.MARKDOWN
         )
-    elif query.data == "zel_bot":
+    elif query.data == "zul_bot":
         query.message.edit_text(
             text=BOT, 
             reply_markup=BBMUSIC, 
             parse_mode=ParseMode.MARKDOWN
         )
-    elif query.data == "zel_play":
+    elif query.data == "zul_play":
         query.message.edit_text(
             text=PLAY, 
             reply_markup=BBMUSIC, 
             parse_mode=ParseMode.MARKDOWN
         )
-    elif query.data == "zel_extra":
+    elif query.data == "zul_extra":
         query.message.edit_text(
             text=EXTRA, 
             reply_markup=BBMUSIC, 
             parse_mode=ParseMode.MARKDOWN
         )
-    elif query.data == "zel_jasa":
+    elif query.data == "zul_jasa":
         query.message.edit_text(
             text=JASA, 
             reply_markup=BJASA,
@@ -676,7 +659,7 @@ def migrate_chats(update: Update, _: CallbackContext):
         with contextlib.suppress(KeyError, AttributeError):
             mod.__migrate__(old_chat, new_chat)
 
-    LOGGER.info("Successfully migrated!")
+    LOGGER.info("Berhasil bermigrasi!")
     raise DispatcherHandlerStop
 
 
@@ -719,7 +702,7 @@ def main():
         "start", start, pass_args=True, run_async=True
     )
     home_callback_handler = CallbackQueryHandler(
-        zel_cb, pattern=r"zel_", run_async=True
+        zul_cb, pattern=r"zul_", run_async=True
     )
     help_handler = DisableAbleCommandHandler("help", get_help, run_async=True)
     help_callback_handler = CallbackQueryHandler(
@@ -749,7 +732,7 @@ def main():
     dispatcher.add_error_handler(error_handler)
 
     if WEBHOOK:
-        LOGGER.info("[Zeldris] Using webhooks.")
+        LOGGER.info("[MSDQ-ROBOT] Menggunakan webhooks.")
         updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
 
         if CERT_PATH:
@@ -759,10 +742,10 @@ def main():
             client.run_until_disconnected()
 
     else:
-        LOGGER.info("[Zeldris] Using long polling.")
+        LOGGER.info("[MSDQ-ROBOT] Menggunakan pilihan panjang")
         updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
         if MESSAGE_DUMP:
-            updater.bot.send_message(chat_id=MESSAGE_DUMP, text="I'm a Demon King...")
+            updater.bot.send_message(chat_id=MESSAGE_DUMP, text="MSDQ-ROBOT HAS ACTIVED...")
     if len(argv) in {1, 3, 4}:
         client.run_until_disconnected()
     else:
@@ -771,6 +754,6 @@ def main():
 
 
 if __name__ == "__main__":
-    LOGGER.info(f"[Zeldris] Successfully loaded modules: {str(ALL_MODULES)}")
+    LOGGER.info(f"[MSDQ-ROBOT] Successfully loaded modules: {str(ALL_MODULES)}")
     client.start(bot_token=TOKEN)
     main()
