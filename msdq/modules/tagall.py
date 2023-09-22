@@ -1,4 +1,4 @@
-import asyncio
+weeimport asyncio
 
 from telethon import events
 from telethon.errors import UserNotParticipantError
@@ -132,7 +132,6 @@ async def broadcast(event):
             blocked_count = 0  # Hitung jumlah pengguna yang diblokir
 
             for user in users:
-                user_id = user["user_id"]
                 try:
                     # Kirim pesan broadcast ke setiap pengguna
                     await client.send_message(user_id, message_text)
@@ -154,6 +153,7 @@ async def broadcast(event):
                                f'Total pengguna yang tidak aktif: {deactivated_count}\n' \
                                f'Total pengguna yang diblokir: {blocked_count}'
 
+            await event.reply("Otw Broadcast...")
             await event.reply(response_message)
         else:
             await event.reply('Anda harus membalas pesan yang ingin Anda broadcast dengan perintah ini.')
