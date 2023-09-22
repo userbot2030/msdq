@@ -235,8 +235,8 @@ def start(update: Update, context: CallbackContext):
             if not cek(id):
               try:
                  tambah(id)
-            except:
-                  pass
+              except:
+                   pass
             nama = update.effective_user.first_name
             message.reply_text(
                 PM_START_TEXT.format(
