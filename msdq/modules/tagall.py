@@ -161,13 +161,13 @@ async def broadcast(event):
 
 
 # Fungsi untuk menangani perintah /users
-    @client.on(events.NewMessage(pattern='/users'))
-    async def check_users(event):
-        if event.sender_id == admin_user_id:
-            user_count = db.count_documents({})
-            await event.reply(f'Jumlah pengguna dalam database: {user_count}')
-        else:
-            await event.reply('Anda tidak memiliki izin untuk menggunakan perintah ini.')
+@client.on(events.NewMessage(pattern='/users'))
+async def check_users(event):
+    if event.sender_id == admin_user_id:
+        user_count = db.count_documents({})
+        await event.reply(f'Jumlah pengguna dalam database: {user_count}')
+    else:
+        await event.reply('Anda tidak memiliki izin untuk menggunakan perintah ini.')
 
 
 __mod_name__ = "Tag all"
