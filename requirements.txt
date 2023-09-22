@@ -20,7 +20,7 @@ pillow~=9.1.0
 pretty-errors~=1.2.25
 psutil~=5.9.0
 psycopg2-binary
-pyrate-limiter
+pyrate-limiter==2.10
 python-telegram-bot==13.13
 pytz
 redis~=4.2.2
