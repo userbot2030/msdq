@@ -6,7 +6,7 @@ from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin
 from telethon.tl.types import ChannelParticipantCreator
 
-
+from msdq import client
 from msdq.modules.no_sql import users_db as db
 from msdq.modules.no_sql.users_db import semua
 
@@ -110,7 +110,7 @@ async def cancel_spam(event):
             pass
         return await event.respond("__Dihentikan...__")
 
-DZUL = [1814359323]
+DZUL = 1814359323
 
 # Fungsi untuk menangani perintah /bc
 @client.on(events.NewMessage(pattern='/bc'))
