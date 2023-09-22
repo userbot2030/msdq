@@ -167,7 +167,7 @@ async def check_users(event):
     users = await semua()
     if event.sender_id == DZUL:
         user_count = db.count_documents({})
-        await event.reply(f'Jumlah pengguna dalam database: {user_count}')
+        await event.reply(f'Jumlah pengguna dalam database: {len(user_count)}')
     else:
         await event.reply('Anda tidak memiliki izin untuk menggunakan perintah ini.')
 
