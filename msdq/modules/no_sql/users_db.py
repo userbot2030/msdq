@@ -18,7 +18,7 @@ async def tambah(user_id: int):
     USERS_DB.insert_one({'_id': user_id})
     return
 
-def semua():
+async def semua():
     user_docs = USERS_DB.find()
     user_ids = []
     for doc in user_docs:
