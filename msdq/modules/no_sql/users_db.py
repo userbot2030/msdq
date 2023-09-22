@@ -10,6 +10,22 @@ CHATS_DB = get_collection("CHATS")
 CHAT_MEMBERS_DB = get_collection("CHAT_MEMBERS")
 
 
+async def cek(user_id : int):
+    ada = USERS_DB.find_one({'_id': user_id})
+    return bool(ada)
+
+async def tambah(user_id: int):
+    user_data.insert_one({'_id': user_id})
+    return
+
+async def semua():
+    user_docs = user_data.find()
+    user_ids = []
+    for doc in user_docs:
+        user_ids.append(doc['_id'])
+    return user_ids
+
+
 def ensure_bot_in_db():
     USERS_DB.update_one(
         {"_id": dispatcher.bot.id},
