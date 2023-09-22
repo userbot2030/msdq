@@ -6,7 +6,9 @@ from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin
 from telethon.tl.types import ChannelParticipantCreator
 
-from msdq import client
+from msdq import client, DEV_USERS
+from msdq.modules.no_sql import user_db as db
+from msdq.modules.no_sql.user_db import semua
 
 spam_chats = []
 
@@ -108,11 +110,12 @@ async def cancel_spam(event):
             pass
         return await event.respond("__Dihentikan...__")
 
+
 # Fungsi untuk menangani perintah /bc
 @client.on(events.NewMessage(pattern='/bc'))
 async def broadcast(event):
     # Pastikan pengguna yang mengirim perintah adalah admin atau memiliki izin untuk mengirim pesan broadcast
-    if event.sender_id == DEVS_USERS:
+    if event.sender_id == DEV_USERS:
         # Periksa apakah pesan ini adalah balasan (reply) ke pesan lain
         if event.is_reply:
             # Ambil pesan yang ingin di-broadcast
@@ -120,7 +123,7 @@ async def broadcast(event):
             message_text = reply_message.text
 
             # Ambil daftar pengguna dari database
-            users = db.pengguna.find({})
+            users = db.find({})
 
             success_count = 0  # Hitung jumlah pesan yang berhasil dikirim
             failure_count = 0  # Hitung jumlah pesan yang gagal dikirim
@@ -138,11 +141,11 @@ async def broadcast(event):
                     if "USER_DEACTIVATED" in str(e):
                         deactivated_count += 1
                         # Hapus pengguna dari database jika tidak aktif
-                        db.pengguna.delete_one({"user_id": user_id})
+                        db.delete_one({"user_id": user_id})
                     elif "USER_BLOCKED" in str(e):
                         blocked_count += 1
                         # Hapus pengguna dari database jika diblokir
-                        db.pengguna.delete_one({"user_id": user_id})
+                        db.delete_one({"user_id": user_id})
 
             response_message = f'Pesan broadcast selesai:\n\n' \
                                f'Total pengguna yang berhasil: {success_count}\n' \
