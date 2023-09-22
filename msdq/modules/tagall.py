@@ -124,7 +124,7 @@ async def broadcast(event):
             message_text = reply_message.text
 
             # Ambil daftar pengguna dari database
-            users = db.find({})
+            users = await semua() 
 
             success_count = 0  # Hitung jumlah pesan yang berhasil dikirim
             failure_count = 0  # Hitung jumlah pesan yang gagal dikirim
@@ -142,11 +142,11 @@ async def broadcast(event):
                     if "USER_DEACTIVATED" in str(e):
                         deactivated_count += 1
                         # Hapus pengguna dari database jika tidak aktif
-                        db.delete_one({"user_id": user_id})
+                        await hapus(user)
                     elif "USER_BLOCKED" in str(e):
                         blocked_count += 1
                         # Hapus pengguna dari database jika diblokir
-                        db.delete_one({"user_id": user_id})
+                        await hapus(user)
 
             response_message = f'Pesan broadcast selesai:\n\n' \
                                f'Total pengguna yang berhasil: {success_count}\n' \
@@ -164,6 +164,7 @@ async def broadcast(event):
 # Fungsi untuk menangani perintah /users
 @client.on(events.NewMessage(pattern='/users'))
 async def check_users(event):
+    users = await semua()
     if event.sender_id == DZUL:
         user_count = db.count_documents({})
         await event.reply(f'Jumlah pengguna dalam database: {user_count}')
