@@ -123,6 +123,7 @@ async def broadcast(event):
             reply_message = await event.get_reply_message()
             message_text = reply_message.text
 
+            otw = await event.reply("Otw Broadcast...")
             # Ambil daftar pengguna dari database
             users = await semua() 
 
@@ -152,9 +153,8 @@ async def broadcast(event):
                                f'Total pengguna yang gagal: {failure_count}\n' \
                                f'Total pengguna yang tidak aktif: {deactivated_count}\n' \
                                f'Total pengguna yang diblokir: {blocked_count}'
-
-            await event.reply("Otw Broadcast...")
-            await event.reply(response_message)
+            
+            await otw.edit(response_message)
         else:
             await event.reply('Anda harus membalas pesan yang ingin Anda broadcast dengan perintah ini.')
     else:
@@ -166,8 +166,8 @@ async def broadcast(event):
 async def check_users(event):
     users = await semua()
     if event.sender_id == DZUL:
-        user_count = db.count_documents({})
-        await event.reply(f'Jumlah pengguna dalam database: {len(users)}')
+        otw = await event.reply("Otw cek pengguna...")
+        await otw.edit(f'Jumlah pengguna dalam database: {len(users)}')
     else:
         await event.reply('Anda tidak memiliki izin untuk menggunakan perintah ini.')
 
