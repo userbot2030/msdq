@@ -48,7 +48,7 @@ from msdq.modules.helper_funcs.chat_status import is_user_admin
 from msdq.modules.helper_funcs.misc import paginate_modules
 from msdq.modules.purge import client
 from msdq.modules.no_sql import users_db as db
-#from msdq.modules.no_sql
+from msdq.modules.no_sql.user_db import cek, tambah
 from msdq import BOT_USERNAME, PICTURE
 from zul.text import MANAGE, DASAR, LANJUT, AHLI, PRO, MUSIC, ADMIN, BOT, PLAY, EXTRA, JASA
 from zul.button import BMANAGE, BBMANAGE, BMUSIC, BBMUSIC, BJASA
@@ -232,9 +232,9 @@ def start(update: Update, context: CallbackContext):
 
         else:
             id = update.effective_user.id
-            if not await cek(id):
+            if not cek(id):
               try:
-                 await tambah(id)
+                 tambah(id)
             except:
                   pass
             nama = update.effective_user.first_name
