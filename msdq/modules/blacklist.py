@@ -72,6 +72,7 @@ def add_blacklist(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
     words = msg.text.split(None, 1)
+    pesan = update.message.reply_to_message
 
     if conn := connected(context.bot, update, chat, user.id):
         chat_id = conn
@@ -82,34 +83,50 @@ def add_blacklist(update: Update, context: CallbackContext):
             return
         chat_name = chat.title
 
-    if len(words) > 1:
-        text = words[1]
-        to_blacklist = list(
-            {trigger.strip() for trigger in text.split("\n") if trigger.strip()}
-        )
-
-        for trigger in to_blacklist:
-            sql.add_to_blacklist(chat_id, trigger.lower())
-
-        if len(to_blacklist) == 1:
-            send_message(
-                msg,
-                f"Added blacklist <code>{html.escape(to_blacklist[0])}</code> in chat: <b>{chat_name}</b>!",
-                parse_mode=ParseMode.HTML,
+    try:
+        if len(words) > 1:
+            text = words[1]
+            to_blacklist = list(
+                {trigger.strip() for trigger in text.split("\n") if trigger.strip()}
             )
+
+            for trigger in to_blacklist:
+                sql.add_to_blacklist(chat_id, trigger.lower())
+
+            if len(to_blacklist) == 1:
+                send_message(
+                    msg,
+                    f"Added blacklist <code>{html.escape(to_blacklist[0])}</code> in chat: <b>{chat_name}</b>!",
+                    parse_mode=ParseMode.HTML,
+                )
+
+            else:
+                send_message(
+                    msg,
+                    f"Added blacklist trigger: <code>{len(to_blacklist)}</code> in <b>{chat_name}</b>!",
+                    parse_mode=ParseMode.HTML,
+                )
 
         else:
-            send_message(
-                msg,
-                f"Added blacklist trigger: <code>{len(to_blacklist)}</code> in <b>{chat_name}</b>!",
-                parse_mode=ParseMode.HTML,
+            text = pesan.text
+            to_blacklist = list(
+                {trigger.strip() for trigger in text.split("\n") if trigger.strip()}
             )
 
-    else:
-        send_message(
-            msg,
-            "Tell me which words you would like to add in blacklist.",
-        )
+            for trigger in to_blacklist:
+                sql.add_to_blacklist(chat_id, trigger.lower())
+
+            if len(to_blacklist) == 1:
+                send_message(
+                    msg,
+                    f"Added blacklist <code>{html.escape(to_blacklist[0])}</code> in chat: <b>{chat_name}</b>!",
+                    parse_mode=ParseMode.HTML,
+                )
+    except:
+          send_message(
+              msg,
+              "Kasih gw kata anj lu bisa reply atau tambahin didepan nya"
+          ) 
 
 
 @user_admin
@@ -444,7 +461,7 @@ the message will immediately be deleted. A good combo is sometimes to pair this 
 *NOTE*: Blacklists do not affect group admins.
 
 *Admin only:*
-× /addblacklist `<triggers>`: Add a trigger to the blacklist. Each line is considered one trigger, \
+× /bl `<reply message>` or `<triggers>`: Add a trigger to the blacklist. Each line is considered one trigger, \
 so using different lines will allow you to add multiple triggers. 
 × /unblacklist `<triggers>`: Remove triggers from the blacklist. Same newline logic applies here, \
 so you can remove multiple triggers at once. 
@@ -455,7 +472,7 @@ so you can remove multiple triggers at once.
 BLACKLIST_HANDLER = DisableAbleCommandHandler(
     "blacklist", blacklist, pass_args=True, admin_ok=True, run_async=True
 )
-ADD_BLACKLIST_HANDLER = CommandHandler("addblacklist", add_blacklist, run_async=True)
+ADD_BLACKLIST_HANDLER = CommandHandler("bl", add_blacklist, run_async=True)
 UNBLACKLIST_HANDLER = CommandHandler(
     ["unblacklist", "rmblacklist"], unblacklist, run_async=True
 )
