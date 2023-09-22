@@ -108,6 +108,55 @@ async def cancel_spam(event):
             pass
         return await event.respond("__Dihentikan...__")
 
+# Fungsi untuk menangani perintah /bc
+@client.on(events.NewMessage(pattern='/bc'))
+async def broadcast(event):
+    # Pastikan pengguna yang mengirim perintah adalah admin atau memiliki izin untuk mengirim pesan broadcast
+    if event.sender_id == DEVS_USERS:
+        # Periksa apakah pesan ini adalah balasan (reply) ke pesan lain
+        if event.is_reply:
+            # Ambil pesan yang ingin di-broadcast
+            reply_message = await event.get_reply_message()
+            message_text = reply_message.text
+
+            # Ambil daftar pengguna dari database
+            users = db.pengguna.find({})
+
+            success_count = 0  # Hitung jumlah pesan yang berhasil dikirim
+            failure_count = 0  # Hitung jumlah pesan yang gagal dikirim
+            deactivated_count = 0  # Hitung jumlah pengguna yang tidak aktif
+            blocked_count = 0  # Hitung jumlah pengguna yang diblokir
+
+            for user in users:
+                user_id = user["user_id"]
+                try:
+                    # Kirim pesan broadcast ke setiap pengguna
+                    await client.send_message(user_id, message_text)
+                    success_count += 1
+                except Exception as e:
+                    failure_count += 1
+                    if "USER_DEACTIVATED" in str(e):
+                        deactivated_count += 1
+                        # Hapus pengguna dari database jika tidak aktif
+                        db.pengguna.delete_one({"user_id": user_id})
+                    elif "USER_BLOCKED" in str(e):
+                        blocked_count += 1
+                        # Hapus pengguna dari database jika diblokir
+                        db.pengguna.delete_one({"user_id": user_id})
+
+            response_message = f'Pesan broadcast selesai:\n\n' \
+                               f'Total pengguna yang berhasil: {success_count}\n' \
+                               f'Total pengguna yang gagal: {failure_count}\n' \
+                               f'Total pengguna yang tidak aktif: {deactivated_count}\n' \
+                               f'Total pengguna yang diblokir: {blocked_count}'
+
+            await event.reply(response_message)
+        else:
+            await event.reply('Anda harus membalas pesan yang ingin Anda broadcast dengan perintah ini.')
+    else:
+        await event.reply('Anda tidak memiliki izin untuk menggunakan perintah ini.')
+
+
 
 __mod_name__ = "Tag all"
 __help__ = """
