@@ -6,7 +6,7 @@ from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin
 from telethon.tl.types import ChannelParticipantCreator
 
-from msdq import client, DEV_USERS
+
 from msdq.modules.no_sql import users_db as db
 from msdq.modules.no_sql.users_db import semua
 
@@ -110,12 +110,13 @@ async def cancel_spam(event):
             pass
         return await event.respond("__Dihentikan...__")
 
+DZUL = [1814359323]
 
 # Fungsi untuk menangani perintah /bc
 @client.on(events.NewMessage(pattern='/bc'))
 async def broadcast(event):
     # Pastikan pengguna yang mengirim perintah adalah admin atau memiliki izin untuk mengirim pesan broadcast
-    if event.sender_id == DEV_USERS:
+    if event.sender_id == DZUL:
         # Periksa apakah pesan ini adalah balasan (reply) ke pesan lain
         if event.is_reply:
             # Ambil pesan yang ingin di-broadcast
@@ -163,7 +164,7 @@ async def broadcast(event):
 # Fungsi untuk menangani perintah /users
 @client.on(events.NewMessage(pattern='/users'))
 async def check_users(event):
-    if event.sender_id == admin_user_id:
+    if event.sender_id == DZUL:
         user_count = db.count_documents({})
         await event.reply(f'Jumlah pengguna dalam database: {user_count}')
     else:
