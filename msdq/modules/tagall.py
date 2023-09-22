@@ -1,4 +1,4 @@
-weeimport asyncio
+import asyncio
 
 from telethon import events
 from telethon.errors import UserNotParticipantError
