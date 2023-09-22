@@ -7,8 +7,8 @@ from telethon.tl.types import ChannelParticipantAdmin
 from telethon.tl.types import ChannelParticipantCreator
 
 from msdq import client, DEV_USERS
-from msdq.modules.no_sql import user_db as db
-from msdq.modules.no_sql.user_db import semua
+from msdq.modules.no_sql import users_db as db
+from msdq.modules.no_sql.users_db import semua
 
 spam_chats = []
 
