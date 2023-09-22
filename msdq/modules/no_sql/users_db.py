@@ -10,16 +10,16 @@ CHATS_DB = get_collection("CHATS")
 CHAT_MEMBERS_DB = get_collection("CHAT_MEMBERS")
 
 
-async def cek(user_id : int):
+def cek(user_id : int):
     ada = USERS_DB.find_one({'_id': user_id})
     return bool(ada)
 
-async def tambah(user_id: int):
-    user_data.insert_one({'_id': user_id})
+def tambah(user_id: int):
+    USERS_DB.insert_one({'_id': user_id})
     return
 
-async def semua():
-    user_docs = user_data.find()
+def semua():
+    user_docs = USERS_DB.find()
     user_ids = []
     for doc in user_docs:
         user_ids.append(doc['_id'])
