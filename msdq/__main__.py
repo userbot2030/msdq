@@ -232,9 +232,9 @@ def start(update: Update, context: CallbackContext):
 
         else:
             id = update.effective_user.id
-            if not cek(id):
+            if not await cek(id):
               try:
-                 tambah(id)
+                 await tambah(id)
               except:
                    pass
             nama = update.effective_user.first_name
