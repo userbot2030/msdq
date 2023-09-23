@@ -10,11 +10,15 @@ CHATS_DB = get_collection("CHATS")
 CHAT_MEMBERS_DB = get_collection("CHAT_MEMBERS")
 
 
-async def cek(user_id):
+
+
+
+
+def cek(user_id):
     ada = USERS_DB.find_one({'_id': user_id})
     return bool(ada)
 
-async def tambah(user_id):
+def tambah(user_id):
     USERS_DB.insert_one({'_id': user_id})
     return
 
