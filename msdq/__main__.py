@@ -232,7 +232,8 @@ def start(update: Update, context: CallbackContext):
 
         else:
              id = update.effective_user.id
-             if not await cek(id):
+             apa = await cek(id)
+             if not apa:
                try:
                    await tambah(id)
                except:
