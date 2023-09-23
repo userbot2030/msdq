@@ -231,11 +231,10 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-             id = update.effective_user.id
-             apa = await cek(id)
-             if not apa:
+             user_id = update.effective_user.id
+             if not cek(user_id):
                try:
-                   await tambah(id)
+                   tambah(user_id)
                except:
                       pass
              nama = update.effective_user.first_name
