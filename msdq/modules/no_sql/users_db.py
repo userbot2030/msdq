@@ -14,11 +14,11 @@ CHAT_MEMBERS_DB = get_collection("CHAT_MEMBERS")
 
 
 
-def cek():
+def cek(user_id: int):
     ada = USERS_DB.find_one({'_id': user_id})
     return bool(ada)
 
-def tambah():
+def tambah(user_id: int):
     USERS_DB.insert_one({'_id': user_id})
     return
 
