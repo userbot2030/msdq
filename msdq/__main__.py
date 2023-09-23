@@ -231,25 +231,25 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            id = update.effective_user.id
-            if not await cek(id):
-              try:
-                 await tambah(id)
-              except:
-                   pass
-            nama = update.effective_user.first_name
-            message.reply_text(
-                PM_START_TEXT.format(
-                    escape_markdown(nama), 
-                    escape_markdown(context.bot.first_name),
-                    escape_markdown(uptime),
-                    db.num_users(),
-                    db.num_chats(),
-                ),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-            )
+             id = update.effective_user.id
+             if not await cek(id):
+               try:
+                   await tambah(id)
+               except:
+                      pass
+             nama = update.effective_user.first_name
+             message.reply_text(
+                 PM_START_TEXT.format(
+                     escape_markdown(nama), 
+                     escape_markdown(context.bot.first_name),
+                     escape_markdown(uptime),
+                     db.num_users(),
+                     db.num_chats(),
+                 ),
+                 reply_markup=InlineKeyboardMarkup(buttons),
+                 parse_mode=ParseMode.MARKDOWN,
+                 timeout=60,
+             )
     else:
         message.reply_photo(
             PICTURE,
