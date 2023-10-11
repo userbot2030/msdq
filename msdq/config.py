@@ -21,7 +21,7 @@ class Config(object):
     URL = None
     MONGO_URI = ""
     MONGO_PORT = 27017  # leave it as it is
-    MONGO_DB = "MsdqRobot"
+    MONGO_DB = ""
     BOT_USERNAME = ""
     PICTURE = ""
 
