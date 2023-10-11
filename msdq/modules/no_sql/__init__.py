@@ -14,7 +14,7 @@ motor = AsyncIOMotorClient(MONGO_URI)
 db = motor[MONGO_DB]
 engine = AIOEngine(motor, MONGO_DB)
 DB_CLIENT = MongoClient(MONGO_URI)
-_DB = DB_CLIENT["MSDQROBOT"]
+_DB = DB_CLIENT[MONGO_DB]
 
 
 def get_collection(name: str) -> collection:
