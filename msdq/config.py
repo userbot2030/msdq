@@ -5,15 +5,15 @@ class Config(object):
     # WAJIB
     TOKEN = ""
     OWNER_ID = (
-        "1814359323"
+        "6024180996"
     )
-    OWNER_USERNAME = "msdqqq"
+    OWNER_USERNAME = "foundermidnight"
     API_HASH = ""
     API_ID = 
 
     # PRIORITAS
     SQLALCHEMY_DATABASE_URI = ""
-    MESSAGE_DUMP = "-1001880060276"
+    MESSAGE_DUMP = "-1002049500040"
     REDIS_URL = ""
     LOAD = []
     NO_LOAD = []
@@ -27,17 +27,17 @@ class Config(object):
 
     # OPTIONAL
     DEV_USERS = (
-        [1814359323]
+        [6024180996]
     )  # List of id's (not usernames) for users which have sudo access to the bot.
     SUPPORT_USERS = (
-        [1814359323]
+        [5872109995]
     )  # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
     WHITELIST_USERS = (
-        [1814359323]
+        [5872109995]
     )  # List of id's (not usernames) for users which WONT be banned/kicked by the bot.
     WHITELIST_CHATS = []
     BLACKLIST_CHATS = []
-    DONATION_LINK = "https://t.me/DezetStore"
+    DONATION_LINK = "https://t.me/berlinmidnight"
     CERT_PATH = None
     PORT = 5000
     DEL_CMDS = False  # Whether or not you should delete "blue text must click" commands
@@ -47,7 +47,7 @@ class Config(object):
     ALLOW_EXCL = False  # DEPRECATED, USE BELOW INSTEAD! Allow ! commands as well as /
     CUSTOM_CMD = False  # Set to ('/', '!') or whatever to enable it, like ALLOW_EXCL but with more custom handler!
     API_OPENWEATHER = None  # OpenWeather API
-    SPAMWATCH_API = "Ivaq3WVuTX79bw_ISy9~I3TU6MtMvldP0HgP1bpzzYaX5pKMXtyINHC61DEQpnxh"
+    SPAMWATCH_API = "UvVoGCq~EZaGZnIXubnELN_sDNP7fxahvT9I2eIfdXniJ6qzyj27Jbn3s18cmS3P"
     WALL_API = None
     SPAMMERS = None
 
