@@ -104,11 +104,8 @@ buttons = [
         InlineKeyboardButton(text="ᴍᴜsɪᴄ", callback_data="zul_music"),
     ],
     [
-        InlineKeyboardButton(text="ᴊᴀsᴀ ʙᴏᴛ🤖", callback_data="zul_jasa"),
-    ],
-    [
-        InlineKeyboardButton(text="ᴄʜᴀɴɴᴇʟ", url="https://t.me/DezetStore"),
-        InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="https://t.me/DezetSupport"),
+        InlineKeyboardButton(text="ᴄʜᴀɴɴᴇʟ", url="https://t.me/berlinmusic_support"),
+        InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="https://t.me/asupanmidnight"),
     ],
   ]
 
@@ -261,12 +258,12 @@ def start(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Updates 📡",
-                            url="https://t.me/DezetStore",
+                            text="ᴜᴘᴅᴀᴛᴇ",
+                            url="https://t.me/berlinmidnight",
                         ),
                         InlineKeyboardButton(
-                            text="☎️ Support",
-                            url="https://t.me/DezetSupport",
+                            text="sᴜᴘᴘᴏʀᴛ",
+                            url="https://t.me/Berlinmusic_support",
                         ),
                     ]
                 ]
