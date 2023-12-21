@@ -1,5 +1,5 @@
 {
-  "name": "MSDQ-ROBOT",
+  "name": "ɴᴛ ꝛσʙσᴛ",
   "description": "Telegram group management bot.",
   "logo": "",
   "keywords": [
@@ -9,9 +9,9 @@
     "manage",
     "msdq"
   ],
-  "repository": "https://github.com/MS-DZULQURNAIN/msdq",
+  "repository": "https://github.com/kansya-nt/msdq",
   "website": "",
-  "success_url": "t.me/DezetStore",
+  "success_url": "t.me/berlinmidnight",
   "addons": [
     {
       "options": {
@@ -40,12 +40,12 @@
     "API_ID": {
       "description": "Get API_ID from my.telegram.org, used for telethon based modules.",
       "required": true,
-      "value": ""
+      "value": "23371587"
     },
     "API_HASH": {
       "description": "Get API_HASH from my.telegram.org, used for telethon based modules.",
       "required": true,
-      "value": ""
+      "value": "a014ed669df0aa68734b5ecf93e65a3a"
     },
     "SQLALCHEMY_DATABASE_URI": {
       "description": "Your postgres sql db, empty this field if you dont have one.ex: sqldbtype://username:pw@hostname:port/db_name",
@@ -55,11 +55,11 @@
     "OWNER_ID": {
       "description": "Your user ID as an integer.",
       "required": true,
-      "value": "1814359323"
+      "value": "6024180996"
     },
     "HEROKU_API_KEY": {
       "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
-      "value": ""
+      "value": "a21794af-7e77-40e0-8fb5-958f2735bd93"
     },
     "HEROKU_APP_NAME": {
       "description": "Enter the Heroku app name here (Must an exact same name with your input above).",
@@ -67,37 +67,37 @@
     },
     "OWNER_USERNAME": {
       "description": "Your username without the @",
-      "value": "msdqq"
+      "value": "foundermidnight"
     },
     "SUPPORT_CHAT": {
       "description": "Your Telegram support group chat username where your users will go and bother you with shit But be like: MyGroupChatUsernameBlah. If this ever points to zeldris support than consider you made an enemy.",
       "required": true,
-      "value": "DezetSupport"
+      "value": "berlinmusic_support"
     },
     "MESSAGE_DUMP": {
       "description": "Event logs channel to note down important bot level events, recommend to make this public. ex: '-123456'",
       "required": true,
-      "value": ""
+      "value": "-1002049500040"
     },
     "DEV_USERS": {
       "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Zeldris Support then keep the current ID's here at they are and add yours.",
       "required": false,
-      "value": "1814359323"
+      "value": "6024180996"
     },
     "SUPPORT_USERS": {
       "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Zeldris Support then keep the current ID's here at they are and add yours.",
       "required": false,
-      "value": "1814359323"
+      "value": "5872109995"
     },
     "WHITELIST_USERS": {
       "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Zeldris Support then keep the current ID's here at they are and add yours.",
       "required": false,
-      "value": "1814359323"
+      "value": "5872109995"
     },
     "SPAMWATCH_API": {
       "description": "Spamwatch API Token, Get one from @SpamWatchBot.",
       "required": false,
-      "value": ""
+      "value": "UvVoGCq~EZaGZnIXubnELN_sDNP7fxahvT9I2eIfdXniJ6qzyj27Jbn3s18cmS3P"
     },
     "STRICT_GBAN": {
       "description": "Enforce gbans across new groups as well as old groups. When a gbanned user talks, he will be banned.",
@@ -144,7 +144,7 @@
     "DONATION_LINK": {
       "description": "Optional: link where you would like to receive donations. If you are a noob, better leave it linking to paul",
       "required": false,
-      "value": "https://t.me/DezetStore"
+      "value": "https://t.me/Berlinmidnight"
     },
     "DEL_CMDS": {
       "description": "Set this to True if you want to delete command messages from users who don't have the perms to run that command.",
@@ -178,12 +178,12 @@
     "REDIS_URL": {
       "description": "Take it from redislabs.com and the format should be redis://username:password@publicendpoint:port/",
       "required": true,
-      "value": ""
+      "value": "redis://default:1zZzgkMkcxzi9Mmql4wKIC0ZvpII8Ims@redis-15551.c292.ap-southeast-1-1.ec2.cloud.redislabs.com:15551"
     },
     "MONGO_DB": {
       "description": "Your mongodb name",
       "required": true,
-      "value": "MSDQROBOT"
+      "value": "kansya"
     },
     "MONGO_PORT": {
       "description": "Your mongodb port, better don't touch it",
@@ -193,7 +193,7 @@
     "MONGO_URI": {
       "description": "Your mongodb url",
       "required": true,
-      "value": ""
+      "value": "mongodb+srv://kansya:1234@cluster0.pz6wrfk.mongodb.net/?retryWrites=true&w=majority"
     }
   }
 }
