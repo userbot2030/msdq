@@ -47,7 +47,7 @@ BBMUSIC = InlineKeyboardMarkup(
 BJASA = InlineKeyboardMarkup(
               [
                  [
-                     InlineKeyboardButton("Admin", url="https://t.me/msdqqq")
+                     InlineKeyboardButton("Admin", url="https://t.me/berlinmidnight")
                  ],
                  [
                     InlineKeyboardButton(text="«", callback_data="zul_back"),
