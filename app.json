@@ -11,7 +11,7 @@
   ],
   "repository": "https://github.com/kansya-nt/msdq",
   "website": "",
-  "success_url": "t.me/berlinmidnight",
+  "success_url": "t.me/Foundermidnight",
   "addons": [
     {
       "options": {
@@ -87,12 +87,12 @@
     "SUPPORT_USERS": {
       "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Zeldris Support then keep the current ID's here at they are and add yours.",
       "required": false,
-      "value": "5872109995"
+      "value": "6024180996"
     },
     "WHITELIST_USERS": {
       "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Zeldris Support then keep the current ID's here at they are and add yours.",
       "required": false,
-      "value": "5872109995"
+      "value": "6024180996"
     },
     "SPAMWATCH_API": {
       "description": "Spamwatch API Token, Get one from @SpamWatchBot.",
@@ -120,7 +120,7 @@
     "URL": {
       "description": "The Heroku App URL :-  https://<appname>.herokuapp.com/",
       "required": false,
-      "value": ""
+      "value": "https://.herokuapp.com/"
     },
     "NO_LOAD": {
       "description": "Dont load these modules cause they shit, space separation",
@@ -144,7 +144,7 @@
     "DONATION_LINK": {
       "description": "Optional: link where you would like to receive donations. If you are a noob, better leave it linking to paul",
       "required": false,
-      "value": "https://t.me/Berlinmidnight"
+      "value": "https://t.me/Foundermidnight"
     },
     "DEL_CMDS": {
       "description": "Set this to True if you want to delete command messages from users who don't have the perms to run that command.",
@@ -173,7 +173,7 @@
     "PICTURE": {
       "description": "Link picture alive",
       "required": false,
-      "value": ""
+      "value": "https://graph.org/file/c012d72d5a73c36df493a.jpg"
     },
     "REDIS_URL": {
       "description": "Take it from redislabs.com and the format should be redis://username:password@publicendpoint:port/",
