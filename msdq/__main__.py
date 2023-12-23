@@ -105,7 +105,7 @@ buttons = [
     ],
     [
         InlineKeyboardButton(text="ᴄʜᴀɴɴᴇʟ", url="https://t.me/berlinmusic_support"),
-        InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="https://t.me/asupanmidnight"),
+        InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="https://t.me/Asupan_viral18plus"),
     ],
   ]
 
@@ -259,7 +259,7 @@ def start(update: Update, context: CallbackContext):
                     [
                         InlineKeyboardButton(
                             text="ᴜᴘᴅᴀᴛᴇ",
-                            url="https://t.me/berlinmidnight",
+                            url="https://t.me/foundermidnight",
                         ),
                         InlineKeyboardButton(
                             text="sᴜᴘᴘᴏʀᴛ",
