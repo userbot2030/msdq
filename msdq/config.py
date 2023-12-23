@@ -30,14 +30,14 @@ class Config(object):
         [6024180996]
     )  # List of id's (not usernames) for users which have sudo access to the bot.
     SUPPORT_USERS = (
-        [5872109995]
+        [6024180996]
     )  # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
     WHITELIST_USERS = (
-        [5872109995]
+        [6024180996]
     )  # List of id's (not usernames) for users which WONT be banned/kicked by the bot.
     WHITELIST_CHATS = []
     BLACKLIST_CHATS = []
-    DONATION_LINK = "https://t.me/berlinmidnight"
+    DONATION_LINK = "https://t.me/Foundermidnight"
     CERT_PATH = None
     PORT = 5000
     DEL_CMDS = False  # Whether or not you should delete "blue text must click" commands
