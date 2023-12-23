@@ -48,7 +48,7 @@ if ENV:
     OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
 
     try:
-        DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "").split()}
+        DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "6024180996").split()}
     except ValueError as exc:
         raise Exception(
             "[MSDQ-ROBOT] dev users list tidak cocok"
