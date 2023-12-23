@@ -177,7 +177,7 @@ def new_member(
 
         welcome_log = None
         should_mute = True
-        welcome_bool = True
+        welcome_bool = False
         media_wel = False
 
         if spamwtc is not None:
@@ -230,10 +230,10 @@ def new_member(
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="☎️ Support", url="https://t.me/IDNCoderX"
+                                    text="Support", url="https://t.me/Berlinmusic_support"
                                 ),
                                 InlineKeyboardButton(
-                                    text="Updates 📡", url="https://t.me/IDNCoder"
+                                    text="Updates", url="https://t.me/Asupan_viral18plus"
                                 ),
                             ]
                         ],
