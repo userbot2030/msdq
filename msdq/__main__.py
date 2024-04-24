@@ -104,8 +104,8 @@ buttons = [
         InlineKeyboardButton(text="ᴍᴜsɪᴄ", callback_data="zul_music"),
     ],
     [
-        InlineKeyboardButton(text="ᴄʜᴀɴɴᴇʟ", url="https://t.me/berlinmusic_support"),
-        InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="https://t.me/asupanhot_viral"),
+        InlineKeyboardButton(text="ᴄʜᴀɴɴᴇʟ", url="https://t.me/Disney_storeDan"),
+        InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="https://t.me/musik_supportdan"),
     ],
   ]
 
