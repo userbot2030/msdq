@@ -5,15 +5,15 @@ class Config(object):
     # WAJIB
     TOKEN = ""
     OWNER_ID = (
-        "1825139822"
+        "5779185981"
     )
-    OWNER_USERNAME = "foundermidnight"
+    OWNER_USERNAME = "mhmdwldnnnn"
     API_HASH = ""
     API_ID = 
 
     # PRIORITAS
     SQLALCHEMY_DATABASE_URI = ""
-    MESSAGE_DUMP = "-1002049500040"
+    MESSAGE_DUMP = "-1001969246312"
     REDIS_URL = ""
     LOAD = []
     NO_LOAD = []
@@ -27,17 +27,17 @@ class Config(object):
 
     # OPTIONAL
     DEV_USERS = (
-        [1825139822]
+        [5779185981]
     )  # List of id's (not usernames) for users which have sudo access to the bot.
     SUPPORT_USERS = (
-        [6024180996]
+        [5779185981]
     )  # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
     WHITELIST_USERS = (
-        [1825139822 6024180996 ]
+        [5779185981 5779185981 ]
     )  # List of id's (not usernames) for users which WONT be banned/kicked by the bot.
     WHITELIST_CHATS = []
     BLACKLIST_CHATS = []
-    DONATION_LINK = "https://t.me/adiramontok"
+    DONATION_LINK = "https://t.me/mhmdwldnnnn"
     CERT_PATH = None
     PORT = 5000
     DEL_CMDS = False  # Whether or not you should delete "blue text must click" commands
